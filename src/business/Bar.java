@@ -27,6 +27,13 @@ public class Bar {
 	}
 
 	public int getQtdClientes() {
+		int qtd=0;
+		for(int i=0;i<clientes.size();i++){
+			if(clientes.get(i).isNoBar()==true){
+				qtd++;
+			}
+		}
+		qtdClientes = qtd;
 		return qtdClientes;
 	}
 
@@ -101,7 +108,9 @@ public class Bar {
 		Cliente auxCliente;
 		for (int i = 0; i < clientes.size(); i++) {
 			if (clientes.get(i).getCPF().equals(cpf)) {
-				return auxCliente = clientes.get(i);
+				if(clientes.get(i).isNoBar()==true){
+					return auxCliente = clientes.get(i);
+				}		
 			}
 		}
 		return null;
@@ -117,7 +126,7 @@ public class Bar {
 		return (int)(((double)getQtdFemininos() / (double)getQtdClientes()) * 100);
 	}
 
-	@Override
+	@Override 
 	public String toString() {
 		String cli;
 		cli = "Clientes [";
